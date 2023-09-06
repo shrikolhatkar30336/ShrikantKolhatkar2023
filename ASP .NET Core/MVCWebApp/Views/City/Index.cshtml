@@ -1,0 +1,34 @@
+﻿@model IEnumerable<MVCWebApp.Models.Cities>
+
+<div style="text-align: center; color: red;">
+    <h2>City List</h2>
+</div>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                City Name
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CityName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CityId">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.CityId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

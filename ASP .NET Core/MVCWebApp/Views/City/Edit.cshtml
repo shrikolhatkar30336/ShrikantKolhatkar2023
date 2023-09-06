@@ -1,0 +1,21 @@
+﻿@model MVCWebApp.Models.Cities
+
+<h2>Edit City</h2>
+
+<form asp-action="Edit" asp-route-id="@Model.CityId" method="post">
+    <div class="form-group">
+        <label for="CityName" class="control-label">City Name</label>
+        <input asp-for="CityName" class="form-control" />
+        <span asp-validation-for="CityName" class="text-danger"></span>
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

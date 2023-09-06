@@ -1,0 +1,59 @@
+﻿@model List<MVCWebApp.Models.UserInfo>
+
+<ul class="navbar-nav ml-auto">
+    @if (ViewContext.HttpContext.Session.GetString("UserID") != null)
+    {
+        <li class="nav-item">
+            <a class="nav-link" asp-action="Logout" asp-controller="User">Logout</a>
+        </li>
+    }
+</ul>
+
+
+
+<div style="text-align: center; color: red;">
+    <h2>UserInfo List</h2>
+</div>
+<br />
+<form method="get">
+    <div class="form-group text-center">
+        <label for="search" class="control-label">Search:</label>
+        <input type="text" id="search" name="search" class="form-control" value="@ViewBag.Search" />
+        <br />
+        <input type="submit" value="Search" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">Clear</a>
+    </div>
+</form>
+
+<p>
+    <a asp-action="Create">Create New User</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Password</th>
+            <th>Mobile Number</th>
+            <th>Email ID</th>
+            <th>City</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var UserInfo in Model)
+        {
+            <tr>
+                <td>@UserInfo.Name</td>
+                <td>@UserInfo.Password</td>
+                <td>@UserInfo.MobileNumber</td>
+                <td>@UserInfo.EmailID</td>
+                <td>@UserInfo.City</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@UserInfo.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@UserInfo.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
